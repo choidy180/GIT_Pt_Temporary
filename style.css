@@ -1,0 +1,1015 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('http://fonts.googleapis.com/earlyaccess/hanna.css'); 
+
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF Light';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MaplestoryOTFLight';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFLight.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root{
+  --black: #141414;
+  --white: #fff;
+  --deepwhite: #e9e9e9;
+  --mscroll: #C0C0C0;
+  --sscroll: #E0E0E0;
+  --pjtop: #f1f3f5;
+  --pjbottom: #ffffff;
+  --black2: #808080;
+  --scrollbar: #9932CC;
+  --year: #CC0000;
+}
+
+/* 다크모드 */
+.dark{
+  --white: #141414;
+  --deepwhite: #303030;
+  --black: #fff;
+  --mscroll: #202020;
+  --sscroll: #808080;
+  --pjtop: #202020;
+  --pjbottom: #404040;
+  --scrollbar: #E4E724;
+  --year: #E4E724;
+}
+html{
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+body section{
+  scroll-snap-align: start;
+  position: relative;
+  scroll-behavior: smooth;
+}
+section{
+  width: 100vw !important;
+  overflow: hidden;
+}
+
+/* 스크롤 */
+body::-webkit-scrollbar{
+  width: 10px;
+}
+body::-webkit-scrollbar-thumb{
+  background: var(--mscroll);
+}
+body::-webkit-scrollbar-track{
+  background: var(--sscroll);
+}
+
+/* 헤더 */
+header{
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 40px 100px;
+  z-index: 10000;
+}
+header .logo{
+  position: relative;
+  display: inline-flex;
+  color: var(--black);
+  font-size: 2em;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.rightSide{
+  display: flex;
+}
+.btns{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.btns ion-icon{
+  font-size: 1.5em;
+  color: var(--black);
+}
+.btns.menuToggle ion-icon{
+  font-size: 3em;
+}
+.btns ion-icon:nth-child(2){
+  display: none;
+}
+.btns.active ion-icon:nth-child(2){
+  display: block;
+}
+.btns.active ion-icon:nth-child(1){
+  display: none;
+}
+/* 헤드 */
+.head{
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  background: var(--white);
+  overflow:hidden;
+  transition: all 0.3s;
+}
+.head img{
+  height: 80vh;
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+  z-index: 5;
+}
+.head .circle {
+  position: absolute;
+  width: 130vh;
+  height: 130vh;
+  right: -70vw;
+  bottom: -80vh;
+  border-radius: 50%;
+  background: var(--deepwhite);
+  z-index: 3;
+  transition: all 1s ease-in;
+}
+.head .circle.active{
+  right: -20vw;
+  bottom: -40vh;
+}
+
+.head .text{
+  position: absolute;
+  top: 35vh;
+  left: 30vw;
+  color: var(--black);
+  z-index: 5;
+}
+.head .text .title{
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  font-family: 'MaplestoryOTFLight';
+}
+.head .text .introduce{
+  font-size: 3em;
+  font-weight: 700;
+  letter-spacing: -2px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.head .text .introduce_k{
+  font-size: 3em;
+  line-height: 1.2em;
+  font-family: 'NEXON Lv1 Gothic OTF';
+}
+.head .text .com_pro{
+  padding: 12px 14px 12px 14px;
+  border-radius: 5px;
+  margin-top: 14px;
+  background: var(--deepwhite);
+  display: flex;
+  width: 40%;
+  box-shadow: 0px 2px 0px 0px var(--sscroll);
+}
+.head .text .com_pro .pro_num{
+  font-size: 2em;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.head .text .com_pro .pro_text{
+  font-size: 1em;
+  font-weight: 700;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0.9em;
+  font-family: 'MaplestoryOTFLight';
+}
+
+/* experience */
+.experience{
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.experience video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.experience .row{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: #e9e9e9;
+  font-family: 'MaplestoryOTFLight';
+  font-size: 3em;
+  width: 45vw;
+  min-width: 700px;
+}
+.experience .row .content{
+  margin-top: 20px;
+  width: 100%;
+  min-height: 30vh;
+}
+.experience .row .content .box{
+  width: calc(100%);
+  padding: 26px 0 26px 0;
+  border-bottom: 1px solid #6c757d;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.experience .row .content .box .date{
+  width: 30%;
+  display: flex;
+  align-items: flex-start;
+}
+.experience .row .content .box .date p{
+  color: #e9e9e9;
+  font-family: 'NEXON Lv1 Gothic OTF';
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+.experience .row .content .box .name{
+  width: 30%;
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.85rem;
+}
+.experience .row .content .box .name p{
+  font-size: 2rem;
+  font-family: 'NEXON Lv1 Gothic OTF Bold';
+}
+.experience .row .content .box .text{
+  width: 40%;
+}
+.experience .row .content .box .text p{
+  font-family: 'NEXON Lv1 Gothic OTF';
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.5px;
+}
+/* 메인 */
+.main{
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.main video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  user-select: none;
+  mix-blend-mode: screen;
+  filter: invert(0.12);
+  transition: all 0.15s;
+}
+.dark .mask{
+  filter: invert(0.88);
+  mix-blend-mode: multiply;
+}
+.main h2{
+  position: relative;
+  z-index: 3;
+  font-size: 14vw;
+  font-weight: 400;
+  color: #fff;
+  text-shadow: 0 20px 30px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.main h2:hover{
+  font-weight: 700;
+  text-shadow: -4px 0 #000, 0 9px #000, 9px 0 #000, 0 -4px #000;
+  mix-blend-mode: multiply;
+}
+
+/* PROJECT */
+.project{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: var(--white);
+  transition: 0.3s all ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+.project .row{
+  max-width: 1500px;
+  height: 60vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+.project .row .content{
+  min-width: 450px;
+  width: 48%;
+  padding: 25px 30px 25px 30px;
+  border: 2px solid var(--year);
+  border-radius: 30px;
+}
+.project .row .content .title{
+  font-family: 'NEXON Lv1 Gothic OTF Bold';
+  font-size: 2rem;
+  color: var(--black);
+}
+.project .row .content .tech{
+  font-family: 'MaplestoryOTFLight';
+  font-size: 1rem;
+  color: var(--scrollbar);
+  margin-top: 10px;
+}
+.project .row .content .intro{
+  font-family: 'NEXON Lv1 Gothic OTF';
+  font-size: 1rem;
+  color: var(--black);
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.project .row .content .git{
+  font-size: 1rem;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: var(--black);
+}
+.project .row .content .git ion-icon{
+  font-size: 1.5rem;
+  margin-bottom: -7px;
+  line-height: 0.5rem;
+}
+
+/* SERVICE */
+.service{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: var(--white);
+  transition: 0.3s all ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+.service .circle{
+  width: 40vh;
+  height: 40vh;
+  background: var(--deepwhite);
+  border-radius: 50%;
+  position: absolute;
+  bottom: -10vh;
+  left: -50vh;
+  transition: 1.3s;
+  opacity: 0;
+}
+.service .circle.focus{
+  left: -10vh;
+  opacity: 1;
+}
+.service .text{
+  display: flex;
+  max-width: 80vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+.service .text .left{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10px;
+  width: 8.5vw;
+  margin-right: 50px;
+}
+.service .text .left .count{
+  font-size: 7.2em;
+  color: var(--year);
+  display: flex;
+  align-items: flex-start;
+  font-weight: 600;
+}
+.service .text .left .count span{
+  line-height: 1em;
+}
+.service .text .left .count b{
+  font-size: 0.4em;
+  font-weight: 400;
+}
+.service .text .left .text{
+  font-size: 1.4em;
+  line-height: 1.2em;
+  font-family: 'NEXON Lv1 Gothic OTF';
+  color: var(--black);
+}
+
+.service .text .right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 2em;
+  letter-spacing: -2px;
+}
+.service .text .right p{
+  font-family: 'Nanum Barun Gothic';
+  font-weight: 500;
+  color: var(--black);
+}
+.service .text .right .row{
+  font-family: 'Nanum Barun Gothic';
+  margin-top: 10px !important;
+  color: var(--black);
+  max-width: 720px;
+}
+.service .text .right .row .title b{
+  font-family: 'NEXON Lv1 Gothic OTF Regular';
+  margin-top: 20px;
+  font-size: 0.8em;
+  color: var(--black);
+}
+.service .text .right .row .title p{
+  font-family: 'NEXON Lv1 Gothic OTF Light';
+  margin: 0;
+  font-size: 0.54em;
+  color: var(--black);
+}
+
+.about{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: var(--white);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.about .content{
+  max-width: 950px;
+  height: 52vh;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-height: 570px;
+}
+.about .content .img{
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-right: 60px;
+}
+.about .content .img #node{
+  position: absolute;
+  width: 40%;
+  height: auto;
+  left: -20%;
+  top: 5%;
+}
+.about .content .img #react{
+  position: absolute;
+  width: 30%;
+  height: auto;
+  left: 10%;
+  bottom: -10%;
+}
+.about .content .img #nest{
+  position: absolute;
+  width: 30%;
+  height: auto;
+  right: -10%;
+  top: -10%;
+}
+.about .content .img .box{
+  width: 100%;
+  height: calc(100% - 20px);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 10px 0 10px 0px;
+  border-radius: 30px;
+}
+.about .content .img .box img{
+  width: 100%;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.about .content .img .box img:hover{
+  transform: scale(1.05);
+}
+.about .content .text{
+  width: calc(60% - 60px);
+  padding: 20px 0px 20px 0px;
+  height: 100%;
+}
+.about .content .text h2{
+  font-family: 'NEXON Lv1 Gothic OTF';
+  color: var(--black);
+  font-weight: 500;
+  font-size: 2em;
+  line-height: 1.2em;
+} 
+.about .content .text h2 b{
+  font-weight: 600;
+  font-family: 'MaplestoryOTFLight';
+}
+.about .content .text h4{
+  margin-top: 30px;
+  color: #808080;
+  font-weight: 400;
+  font-size: 1.1em;
+  font-family: 'MaplestoryOTFLight';
+}
+.about .content .text .score{
+  margin-top: 40px;
+}
+.about .content .text .score h5{
+  color: var(--black);
+  font-weight: 300;
+  font-size: 1.5em;
+  letter-spacing: -0.03em;
+  margin-top: 20px;
+  font-family: 'NEXON Lv1 Gothic OTF';
+}
+.about .content .text .score .scroll{
+  width: 100%;
+  height: 5px;
+  background: var(--sscroll);
+  position: relative;
+  margin-top: 11px;
+}
+.about .content .text .score .scroll .bar{
+  height: 100%;
+  left: 0;
+  position: absolute;
+  background: var(--scrollbar);
+  transition: all 1s;
+  width: 0%;
+}
+.about.focus .content .text .score .scroll .bar.b1{
+  width: 90%;
+}
+.about.focus .content .text .score .scroll .bar.b2{
+  width: 80%;
+}
+.about.focus .content .text .score .scroll .bar.b3{
+  width: 85%;
+}
+.about.focus .content .text .score .scroll .bar.b4{
+  width: 70%;
+}
+
+
+/* navigation */
+.navigation{
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background: var(--white);
+  transition: all 0.3s;
+  z-index: 4;
+}
+.navigation.active{
+  left: 0;
+}
+.navigation li{
+  list-style: none;
+  text-align: center;
+}
+.navigation li a{
+  display: inline-flex;
+  text-decoration: none;
+  margin: 5px 0;
+  font-size: 1.72em;
+  color: var(--black);
+  padding: 5px 20px;
+  border-radius: 40px;
+}
+.navigation li a:hover{
+  background: var(--black);
+  color: var(--white);
+}
+
+.fire{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: var(--white);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.fire video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.fire .row{
+  z-index: 999;
+  color: #e9e9e9;
+  width: 70vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.fire .row .rd{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.fire .row .rd p{
+  margin-left: 10px;
+  font-family: 'NEXON Lv1 Gothic OTF Bold';
+  font-size: 2em;
+}
+.fire .row .rd p span{
+  font-family: 'NEXON Lv1 Gothic OTF Bold';
+  color: #f00;
+}
+.fire .row .rd_logo{
+  width: 5vh;
+}
+.fire .row .rd_img{
+  margin-top: 20px;
+}
+.fire .row .title{
+  font-family: 'NEXON Lv1 Gothic OTF';
+  font-size: 3em;
+  margin-top: 20px;
+  text-shadow: 2px 2px 2px gray;
+}
+.fire .row .content{
+  margin-top: 10px;
+  font-family: 'NEXON Lv1 Gothic OTF';
+  font-size: 1.2em;
+  color: lightgrey;
+}
+
+.fire .row .link{
+  margin-top: 10px;
+  font-family: 'NEXON Lv1 Gothic OTF';
+  cursor: pointer;
+}
+.fire .row .link:hover{
+  text-decoration: underline;
+}
+
+.exhibition{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: var(--white);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.exhibition video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.exhibition .row{
+  z-index: 999;
+  color: #e9e9e9;
+  width: 70vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.exhibition .row .img{
+  height: 37vh;
+}
+.exhibition .row .title{
+  font-family: 'NEXON Lv1 Gothic OTF';
+  font-size: 3em;
+  margin-top: 20px;
+  text-shadow: 2px 2px 2px gray;
+}
+.exhibition .row .tech{
+  margin-top: 10px;
+  font-family: 'NEXON Lv1 Gothic OTF';
+  font-size: 1.2em;
+  color: #f00;
+}
+.exhibition .row .content{
+  margin-top: 10px;
+  font-family: 'NEXON Lv1 Gothic OTF';
+  font-size: 1.2em;
+  color: lightgrey;
+}
+
+.talk{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: var(--white);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.talk video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.talk .row{
+  z-index: 999;
+  color: #e9e9e9;
+  width: 70vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.talk .row .img{
+  height: 55vh;
+}
+.talk .row .text{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #e9e9e9;
+  padding: 60px 30px 50px 30px;
+  border-radius: 20px;
+  background: #CC0000;
+  background-image: url( "cartographer.png" );
+}
+.talk .row .text .title{
+  font-size: 4em;
+  text-shadow: 1px 1px 1px gray;
+  font-family: 'NEXON Lv1 Gothic OTF Bold';
+}
+.talk .row .tech{
+  margin-top: 10px;
+  font-family: 'NEXON Lv1 Gothic OTF';
+  font-size: 1.4em;
+  color: #e9e9e9;
+}
+
+.talk .row .content{
+  margin-top: 18px;
+  font-family: 'NEXON Lv1 Gothic OTF';
+  font-size: 1.4em;
+  color: #e9e9e9;
+}
+
+
+@media all and (min-width:480px) and (max-width:1240px){
+  .about .content{
+    width: 1024px;
+  }
+  .project .row .content .intro{
+    display: none;
+  }
+}
+
+/* 여기서 */
+@media all and (min-width:480px) and (max-width:1200px){
+  .service .text .left{
+    width: 10vw;
+  }
+  .service .text .right .row{
+    min-width: 620px;
+  }
+}
+
+@media all and (min-width:480px) and (max-width:1050px){
+  .about .content .img{
+    margin-right: 20px;
+  }
+  .about .content .img .box{
+    padding: 0;
+  }
+  .about .content{
+    width: 780px;
+  }
+  .about .content .text h2{
+    font-size: 1.4em;
+  }
+  .about .content .text h4{
+    margin-top: 30px;
+    font-size: 0.9em;
+  }
+  .about .content .text .score{
+    margin-top: 30px;
+  }
+  .about .content .img .box img{
+    height: 100%;
+  }
+  .about .content .text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .about .content .text .score{
+    width: 100%;
+  }
+  .about .content .img #nest{
+    top: -5%;
+    width: 25%;
+  }
+  .about .content .img #react{
+    bottom: -5%;
+  }
+  .about .content .text .score .scroll{
+    width: 100%;
+  }
+}
+
+@media all and (min-width:480px) and (max-width:992px){
+  .service .text .left{
+    display: none;
+  }
+  .service .text .right .row{
+    min-width: 620px;
+  }
+}
+
+/* 모바일 가로 (해상도 768px - 1023px)*/
+@media all and (min-width:480px) and (max-width:800px){
+  .about .content{
+    width: calc(100vw - 50px);
+    height: 85vh;
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    
+  }
+  .about .content .img{
+    width: 60%;
+    height: 50%;
+  }
+  .about .content .img #node{
+    width: 30%;
+    left: -14%;
+  }
+  .about .content .img #nest{
+    width: 20%;
+    right: -5%;
+  }
+  .about .content .img #react{
+    width: 20%;
+  }
+  .about .content .img .box{
+    border-radius: 20px;
+  }
+  .about .content .img .box img{
+    width: 100%;
+    height: auto;
+  }
+  .about .content .text{
+    padding: 20px 20px 0px 20px;
+    width: calc(80% - 40px);
+  }
+  .about .content .text h4{
+    margin-top: 10px;
+  }
+  .about .content .text .score{
+    margin-top: 0;
+  }
+  .about .content .text .score .scroll{
+    width: 100%;
+  }
+  .service .text .right .row{
+    min-width: none;
+  }
+  .about .content .text h2{
+    font-size: 1.2em;
+  }
+}
+
+/* 모바일 */
+@media all and (min-width:480px) and (max-width:700px){
+  .service .text .left{
+    display: none;
+  }
+  .service .text .right .row{
+    min-width: 520px;
+  }
+}
+
+@media all and (min-width:480px) and (max-width:600px){
+  .service .text .left{
+    display: none;
+  }
+  .service .text .right .row{
+    min-width: 450px;
+  }
+}
